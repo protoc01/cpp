@@ -97,3 +97,45 @@ int avlTree::diff(avl_node *temp)
     int b_factor= l_height - r_height;
     return b_factor;
 }
+
+avl_node *avlTree::rr_rotation(avl_node *parent)
+{
+    avl_node *temp;
+    temp = parent->right;
+    parent->right = temp->left;
+    temp->left = parent;
+    return temp;
+}
+/*
+ * Left- Left Rotation
+ */
+avl_node *avlTree::ll_rotation(avl_node *parent)
+{
+    avl_node *temp;
+    temp = parent->left;
+    parent->left = temp->right;
+    temp->right = parent;
+    return temp;
+}
+ 
+/*
+ * Left - Right Rotation
+ */
+avl_node *avlTree::lr_rotation(avl_node *parent)
+{
+    avl_node *temp;
+    temp = parent->left;
+    parent->left = rr_rotation (temp);
+    return ll_rotation (parent);
+}
+ 
+/*
+ * Right- Left Rotation
+ */
+avl_node *avlTree::rl_rotation(avl_node *parent)
+{
+    avl_node *temp;
+    temp = parent->right;
+    parent->right = ll_rotation (temp);
+    return rr_rotation (parent);
+}
