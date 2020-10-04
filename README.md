@@ -1,3 +1,3 @@
 # cpp
-c++ codespace contains cpp algorithms implementations
+c++ codespace contains cpp algorithm implementations
 
